@@ -27,39 +27,5 @@ public class DataGenerator {
         public static String generateDate(int days) {
             return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         }
-
-         /*public static String generateCity(String locale) {
-            List<String> cities = new ArrayList<>();
-            cities.add("Москва");
-            cities.add("Санкт-Петербург");
-            cities.add("Воронеж");
-            cities.add("Архангельск");
-            cities.add("Ростов-на-Дону");
-            cities.add("Пермь");
-            cities.add("Екатеринбург");
-            cities.add("Томск");
-            cities.add("Краснодар");
-
-            Random random = new Random();
-            String city = cities.get(random.nextInt(cities.size()));
-            return city;
-        }*/
-
-        /*public static String generateNumber(String locale) {
-            List<String> numbers = new ArrayList<>();
-            numbers.add("+79031111111");
-            numbers.add("+79031111112");
-            numbers.add("+79031111113");
-            numbers.add("+79031111114");
-            numbers.add("+79031111115");
-            numbers.add("+79031111116");
-            numbers.add("+79031111117");
-            numbers.add("+79031111118");
-            numbers.add("+79031111119");
-
-            Random random = new Random();
-            String number = numbers.get(random.nextInt(numbers.size()));
-            return number;
-        }*/
     }
 }
