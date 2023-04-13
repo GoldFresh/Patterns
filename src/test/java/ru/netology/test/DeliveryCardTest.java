@@ -34,14 +34,16 @@ public class DeliveryCardTest {
         $("[data-test-id=phone] input").setValue(user.getNumber());
         $("[data-test-id=agreement]").click();
         $(".button").click();
-        $(withText("Успешно!")).shouldBe(Condition.visible, Duration.ofSeconds(15000));
-        $(".notification__content").shouldHave(Condition.ownText(date));
+        $("[data-test-id=success-notification] .notification__content")
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(15000))
+                .shouldBe(Condition.visible);
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(rescheduledDate);
         $$("button").find(exactText("Запланировать")).click();
         $$(".button__text").find(exactText("Перепланировать")).click();
-        $(withText("Успешно!")).shouldBe(Condition.visible, Duration.ofSeconds(15000));
-        $(".notification__content").shouldHave(Condition.ownText(rescheduledDate));
+        $("[data-test-id=success-notification] .notification__content")
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + rescheduledDate), Duration.ofSeconds(15000))
+                .shouldBe(Condition.visible);
     }
 
     @Test
@@ -56,17 +58,6 @@ public class DeliveryCardTest {
         $("[data-test-id=name] .input__sub").shouldHave(exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
-    /*@Test
-    void shouldSendFormWithInvalidPhoneNumber() {
-        String date = generateDate(3);
-        $("[data-test-id=city] input").setValue(user.getCity());
-        $("[data-test-id=date] input").setValue(date);
-        $("[data-test-id=name] input").setValue(user.getName());
-        $("[data-test-id=phone] input").setValue("+790344444441");
-        $("[data-test-id=agreement]").click();
-        $(".button").click();
-        $("[data-test-id=phone] .input__sub").shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
-    }*/
 
     @Test
     void shouldSendFormWithInvalidCity() {
